@@ -1,0 +1,36 @@
+// Simulation Setup for simple block detector
+// 30mm x 30mm x 30mm block of scintillator
+// saved as cesiumblocktest.source
+
+// Global Parameters
+Name CesiumBlockTest
+Version 1.0
+
+Geometry ./simpleblock.geo.setup
+
+//------ Simulation Options -------
+DefaultRangeCut 0.001
+
+PhysicsListEM Livermore
+
+PhysicsListHD qgsp-bert-hp
+
+StoreSimulationInfo all
+
+StoreCalibrated true
+
+StoreSimulationInfoIonization true
+
+DiscretizeHits true
+
+//------ Run Options -------
+
+Run Cs137Beam
+Cs137Beam.FileName CesiumBlockTest
+Cs137Beam.Triggers 10000
+
+Cs137Beam.Source Cs137
+Cs137.ParticleType 1
+Cs137.Spectrum Mono 662.0
+Cs137.Beam HomogeneousBeam 4.0 0.0 0.0 -1.0 0.0 0.0 1.0
+Cs137.Flux 1000.0
